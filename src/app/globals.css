@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@font-face {
+  font-family: headFont;
+  src: url("/fonts/billy-magie-billy-magie-400.ttf");
+}
+
+*,
+:root {
+  --ff-head: headFont;
+}
+
+.billy {
+  font-family: var(--ff-head);
+}
+
+body {
+  color: white;
+  background-image: url("/bg.png");
+  background-color: #141414;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+@media (max-width: 768px) {
+  body {
+    background-size: cover;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.source {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.glow::after {
+  content: "";
+  position: absolute;
+  height: 350px;
+  width: 350px;
+  background-color: white;
+  z-index: -1;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  transform: translate(-50%, -50%);
+  filter: blur(60px);
+  opacity: 0.2;
+  transition: all 0.5s;
+}
+.glow::before {
+  content: "2024";
+  position: absolute;
+  font-size: 20px;
+  bottom: 28px;
+  right: -5px;
+  letter-spacing: 0;
+}
+@media screen and (max-width: 768px) {
+  .glow::before {
+    font-size: 20px;
+    bottom: calc(100% - 20px);
+  }
+}
